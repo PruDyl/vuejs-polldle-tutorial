@@ -125,6 +125,9 @@ export default {
     }
   },
   // Use created hook to initialize event bus
+  mounted() {
+    console.log(this.$el.textContent);
+  },
 
   // Use mounted hook to log the text content of the DOM
   methods: {

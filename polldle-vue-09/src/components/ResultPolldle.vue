@@ -90,6 +90,40 @@ export default {
     }
   },
   // Use created hook to initialize EventSource object
+  created() {
+    var source = new EventSource(
+      "http://127.0.0.1:9991" + "/polldles/" + this.$route.params.pathurl + "/votes/sse"
+    );
+    source.addEventListener(
+      "update-polldleresult",
+      e => {
+        var result = JSON.parse(e.data);
+        this.options.title.text = "  ";
+        this.question = capitalizeFirstLetter(result.question);
+
+        this.data = result.results.map(val => ({
+          name: val.name,
+          y: val.counter
+        }));
+
+        this.total = result.results
+          .map(val => val.counter)
+          .reduce((partial_sum, a) => partial_sum + a);
+
+        if (this.total > 0) {
+          this.state = stateResult.RESULT;
+        } else {
+          this.state = stateResult.EMPTY;
+        }
+        this.options.series[0].data = this.data;
+      },
+      false
+    );
+    source.onerror = () => {
+      this.state = stateResult.ERROR;
+      this.errorMessage = "Problem to retrieve Polldle result.";
+    };
+  }
   methods: {
     isResultState() {
       return this.state === stateResult.RESULT;
