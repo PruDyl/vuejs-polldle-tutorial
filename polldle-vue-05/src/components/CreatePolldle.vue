@@ -47,7 +47,10 @@
     <!-- PollDLE option -->
     <!-- Directive v-for with polldleOptions -->
     <div
-      class="row justify-content-center">
+      class="row justify-content-center"
+      v-for="currentPolldleOption in polldleOptions"
+      :key="currentPolldleOption.text">
+        {{currentPolldleOption.text}}
     </div>
 
     <!-- Button Action -->
