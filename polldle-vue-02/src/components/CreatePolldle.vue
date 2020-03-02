@@ -18,7 +18,7 @@
       <div class="col">
         <!-- Directive v-model with newPolldleOptionText -->
         <!-- Directive v-on with addPolldleOption -->
-        <input type="text" placeholder="Polldle Option" class="large-input mx-auto d-block" v-model="newPolldleOptionText" v-on:keypress.enter="addPoddleOption">
+        <input type="text" placeholder="Polldle Option" class="large-input mx-auto d-block" v-model="newPolldleOptionText" v-on:keypress.enter="addPolldleOption">
       </div>
     </div>
     <div class="row">
