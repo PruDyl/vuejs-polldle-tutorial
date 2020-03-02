@@ -58,7 +58,7 @@
         </strong>
       </p>
       <!-- Mustache with computed property: listSize -->
-      <p>Number of PollDLE options: TODO</p>
+      <p>Number of PollDLE options: {{ listSize }}</p>
     </div>
 
     <!-- Directive v-text with errorMessage -->
@@ -79,7 +79,11 @@ export default {
     };
   },
   // Watcher on polldleOptions
-  // Computed property listSize when polldleOptions changes
+  watch: {
+    polldleOptions(){
+      this.buttonShown = this.polldleOptions != null && !(this.polldleOptions.length === 0);
+    }
+  },
   methods: {
     removedPolldleOption(polldleOption) {
       let index = this.polldleOptions.indexOf(polldleOption);
@@ -119,6 +123,12 @@ export default {
         this.polldleOptions.length < 2 ||
         this.question === ""
       );
+    }
+  },
+  // Computed property listSize when polldleOptions changes
+  computed: {
+    listSize(){
+      return this.polldleOptions.length;
     }
   }
 };
