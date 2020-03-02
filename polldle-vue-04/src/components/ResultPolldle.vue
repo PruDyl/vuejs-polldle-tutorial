@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <!-- Directive v-if with !isErrorState() -->
-    <div>
+    <div v-if="!isErrorState()">
       <!-- Mustache with question -->
       <h1>{{ question }}</h1>
       <div class="row">
@@ -13,7 +13,7 @@
       </div>
 
       <!-- Directive v-if with isEmptyState() -->
-      <div>
+      <div v-if="isEmptyState()">
         <h2>No vote at this moment, keep in touch. Results update in real-time.</h2>
       </div>
     </div>

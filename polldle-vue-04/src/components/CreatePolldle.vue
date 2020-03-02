@@ -33,7 +33,7 @@
       </div>
     </div>
     <!-- Directive v-show with buttonShown -->
-    <div class="row">
+    <div class="row" v-show="buttonShown">
       <div class="col">
         <!-- Directive v-on with clearAllPolldleOptions -->
         <button
@@ -77,7 +77,7 @@
 
     <!-- Directive v-show with errorMessage -->
     <!-- Directive v-text with errorMessage -->
-    <div class="error-message alert alert-danger" role="alert" v-text="errorMessage"></div>
+    <div v-show="errorMessage !== ''" class="error-message alert alert-danger" role="alert" v-text="errorMessage"></div>
   </div>
 </template>
 
