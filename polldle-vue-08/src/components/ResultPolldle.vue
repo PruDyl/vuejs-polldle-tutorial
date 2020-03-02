@@ -7,6 +7,7 @@
       <div class="row">
         <div class="col-8">
           <!-- Instance of highcharts component -->
+          <highcharts/>
         </div>
         <div class="col-4">
           <!-- Directive v-for with data -->
@@ -27,8 +28,10 @@
 
 <script>
 // Import the VueHighcharts plugin.
-
-// Use the VueHighcharts plugin.
+import VueHighcharts from "vue-highcharts";
+import Vue from "vue";
+// Use the VueHighcharts plugin
+Vue.use(VueHighcharts);
 
 const stateResult = {
   RESULT: "result",

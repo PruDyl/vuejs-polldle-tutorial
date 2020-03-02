@@ -9,8 +9,10 @@
   },
   "dependencies": {
     "bootstrap-vue": "^2.0.0-rc.21",
+    "highcharts": "^8.0.1",
     "npm": "^6.9.0",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-highcharts": "^0.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",
