@@ -45,6 +45,7 @@
 
 <script>
 // Add dependency to AXIO JavaScript library
+import axios frm 'axios';
 
 const stateResult = {
   WAITING_VOTE: "waiting_vote",
@@ -65,6 +66,24 @@ export default {
   },
   created() {
     // To retrieve PollDLE information from REST web service
+    axios.get("http://127.0.0.1:9991" + "/polldles", {
+      params : {
+        pathURL: this.$route.params.pathurl
+      }
+    }).then(response => {
+      if (response.status === 200) {
+        this.question = response.data.question;
+        this.polldleOptions = response.data.polldleOptions;
+        this.state = stateResult.WAITING_VOTE;
+      } else {
+        this.errorMessage = "Polldle can not be loaded.";
+        this.state = stateResult.ERROR;
+      }
+    }).catch(error => {
+      this.errorMessage = "Polldle can not be loaded.";
+      this.state = stateResult.ERROR;
+      console.error(error);
+    });
   },
   methods: {
     vote() {
@@ -75,6 +94,24 @@ export default {
       };
 
       // To vote for a PollDLE from REST web service
+      axios({
+        method: 'post',
+        baseURL: "http://127.0.0.1:9991" + "/polldles/" + this.$route.params.pathurl + "/votes",
+        data: JSON.stringify(polldleVote),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(response => {
+        if (response.status === 200) {
+          console.log(this.$route.params.pathurl);
+        } else if (response.status === 204) {
+          this.state = stateResult.VOTE_ERROR;
+          this.errorMessage = "Already voted !!!";
+        }
+      }).catch(() => {
+        this.state = stateResult.VOTE_ERROR;
+        this.errorMessage = "Problem to vote for this Polldle.";
+      });
     },
     isWaitingVoteState() {
       return this.state === stateResult.WAITING_VOTE;

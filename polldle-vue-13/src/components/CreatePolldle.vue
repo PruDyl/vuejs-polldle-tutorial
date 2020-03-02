@@ -157,7 +157,26 @@ export default {
         }
       });
 
+      var request = new Request("http://127.0.0.1:9991" + "/polldles", {
+        method: "POST",
+        body: JSON.stringify(polldleObject),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
       // Call REST web service with fetch API
+      fetch(request).then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          this.errorMessage = "Problem to create a new Polldle.";
+        }
+      }).then(data => {
+        console.log(data.pathUrl);
+      }).catch((error) => {
+        this.errorMessage = "Problem to create a new Polldle.";
+        console.error(error);
+      });
     },
 
     isCreatePolldleDisabled() {
