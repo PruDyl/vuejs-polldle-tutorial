@@ -50,7 +50,7 @@
       class="row justify-content-center"
       v-for="currentPolldleOption in polldleOptions"
       :key="currentPolldleOption.text"
-    ><!-- Instance CreatePolldleOption component --></div>
+    ><CreatePolldleOption/></div>
 
     <!-- Button Action -->
     <div class="row">
@@ -88,9 +88,11 @@
 
 <script>
 // Import CreatePolldleOption component
+import CreatePolldleOption from "@/components/CreatePolldleOption.vue";
 export default {
   name: "CreatePolldle",
   // Add dependencies on CreatePolldleOption component
+  components: {CreatePolldleOption},
   data() {
     return {
       question: "",
