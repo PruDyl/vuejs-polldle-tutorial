@@ -8,7 +8,7 @@
         <div class="col-8">
           <!-- Instance of highcharts component -->
           <!-- Declaring Ref attribute -->
-          <highcharts/>
+          <highcharts ref="highcharts"/>
         </div>
         <div class="col-4">
           <!-- Directive v-for with data -->
@@ -89,6 +89,10 @@ export default {
   watch: {
     data() {
       // Use reference on hightcharts component
+      var chart = this.$refs.highcharts.chart;
+      chart.series[0].update({
+        data: this.data
+      }, true)
     }
   },
   // Use created hook to initialize EventSource object
