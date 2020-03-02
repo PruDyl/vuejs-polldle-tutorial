@@ -6,6 +6,8 @@
         type="text"
         class="form-control"
         readonly
+        v-bind:value="polldleOption.text"
+        v-bind:title="polldleOption.text"
       >
     </div>
     <div class="col col-auto">
@@ -30,8 +32,14 @@ export default {
   methods: {
     removePolldleOption(polldleOption) {
     }
-  }
+  },
   // Add properties definition on polldleOption object
+  props: {
+    polldleOption: {
+      type: Object,
+      required: true
+    }
+  }
 };
 </script>
 

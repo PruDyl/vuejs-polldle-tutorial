@@ -53,7 +53,7 @@
     >
       <!-- Instance CreatePolldleOption component -->
       <!-- Send object value for polldleOption property -->
-      <CreatePolldleOption/>
+      <CreatePolldleOption v-bind:polldleOption="currentPolldleOption"/>
     </div>
 
     <!-- Button Action -->
