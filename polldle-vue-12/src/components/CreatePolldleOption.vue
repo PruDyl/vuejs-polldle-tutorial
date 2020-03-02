@@ -31,6 +31,7 @@ export default {
   methods: {
     removePolldleOption(polldleOption) {
       // Trigger an event on the current instance
+      this.$emit("removed-polldle-option", polldleOption);
     }
   },
   // Add properties definition on polldleOption object

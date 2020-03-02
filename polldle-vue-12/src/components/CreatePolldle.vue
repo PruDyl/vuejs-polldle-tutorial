@@ -54,7 +54,7 @@
       <!-- Instance CreatePolldleOption component -->
       <!-- Send object value for currentPolldleOption variable -->
       <!-- Listening the removed-polldle-option event -->
-      <CreatePolldleOption :polldleOption="currentPolldleOption"/>
+      <CreatePolldleOption :polldleOption="currentPolldleOption" v-on:removed-polldle-option="removedPolldleOption($event)"/>
     </div>
 
     <!-- Button Action -->
