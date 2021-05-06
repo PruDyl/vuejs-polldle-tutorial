@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "bootstrap-vue": "^2.0.0-rc.21",
-    "highcharts": "^8.0.1",
+    "highcharts": "^9.0.0",
     "npm": "^6.9.0",
     "vue": "^2.6.10",
     "vue-highcharts": "^0.1.0"
